@@ -12,15 +12,37 @@
         <h1 class="font-bold text-xl ml-5 rotate-2">Pinia Tasks</h1>
       </div>
     </header>
+
+    <!-- filter -->
+    <nav class="flex justify-end">
+      <button
+        class="bg-[#52c160] text-white px-4 py-1 mr-4 rounded-lg mb-10"
+        @click="filter = 'all'"
+      >
+        All tasks</button
+      ><button
+        class="bg-[#52c160] text-white px-4 py-1 mr-[26.5%] rounded-lg mb-10"
+        @click="filter = 'fav'"
+      >
+        Fav tasks
+      </button>
+    </nav>
+
     <!-- task list -->
-    <div class="mx-auto w-[640px] bg-gray-100 rounded-sm py-10">
+    <div
+      class="mx-auto w-[640px] bg-gray-100 rounded-sm py-10"
+      v-if="filter === 'all'"
+    >
       <p class="flex justify-center text-2xl font-bold">All tasks</p>
       <div v-for="task in taskStore.tasks" :key="task.id">
         <TaskDetail :task="task" />
       </div>
     </div>
 
-    <div class="mx-auto w-[640px] bg-gray-100 rounded-sm py-10">
+    <div
+      class="mx-auto w-[640px] bg-gray-100 rounded-sm py-10"
+      v-if="filter === 'fav'"
+    >
       <p class="flex justify-center text-2xl font-bold">Favs tasks</p>
       <div v-for="task in taskStore.favs" :key="task.id">
         <TaskDetail :task="task" />
@@ -30,6 +52,7 @@
 </template>
 
 <script>
+import { ref } from "vue";
 import { useTaskStore } from "./stores/TaskStore";
 
 // components
@@ -39,7 +62,8 @@ export default {
   components: { TaskDetail },
   setup() {
     const taskStore = useTaskStore();
-    return { taskStore };
+    const filter = ref("all");
+    return { taskStore, filter };
   },
 };
 </script>
