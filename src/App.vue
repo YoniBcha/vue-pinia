@@ -33,7 +33,9 @@
       class="mx-auto w-[640px] bg-gray-100 rounded-sm py-10"
       v-if="filter === 'all'"
     >
-      <p class="flex justify-center text-2xl font-bold">All tasks</p>
+      <p class="flex justify-center text-2xl mb-6">
+        You have {{ taskStore.totalCount }} task left to do!
+      </p>
       <div v-for="task in taskStore.tasks" :key="task.id">
         <TaskDetail :task="task" />
       </div>
@@ -43,7 +45,9 @@
       class="mx-auto w-[640px] bg-gray-100 rounded-sm py-10"
       v-if="filter === 'fav'"
     >
-      <p class="flex justify-center text-2xl font-bold">Favs tasks</p>
+      <p class="flex justify-center text-2xl mb-6">
+        You have {{ taskStore.favCount }} fev task left to do!
+      </p>
       <div v-for="task in taskStore.favs" :key="task.id">
         <TaskDetail :task="task" />
       </div>
