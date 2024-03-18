@@ -5,7 +5,6 @@ export const useTaskStore = defineStore("taskStore", {
     tasks: [
       { id: 1, title: "buy some milk", isFav: false },
       { id: 2, title: "play Gloomhaven", isFav: true },
-      { id: 2, title: "play Gloomhaven", isFav: true },
     ],
   }),
   getters: {
@@ -19,6 +18,11 @@ export const useTaskStore = defineStore("taskStore", {
     },
     totalCount: (state) => {
       return state.tasks.length;
+    },
+  },
+  actions: {
+    addTask(task) {
+      this.tasks.push(task);
     },
   },
 });

@@ -2,7 +2,7 @@
   <main>
     <!-- heading   -->
     <header>
-      <div class="flex items-center h-16 bg-[#efefef] justify-center mb-20">
+      <div class="flex items-center h-16 bg-[#efefef] justify-center mb-10">
         <img
           class="rotate-[-30deg]"
           src="./assets/pinia.png"
