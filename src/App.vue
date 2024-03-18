@@ -15,7 +15,7 @@
 
     <!-- new task form -->
     <div class="mb-10">
-      <TaskForm class="mb-5"/>
+      <TaskForm class="mb-5" />
       <hr />
     </div>
 
@@ -33,6 +33,14 @@
         Fav tasks
       </button>
     </nav>
+
+    <!-- Loading -->
+    <div
+      class="max-w-[640px] border-1 border-[#ffcf45] bg-[#f3d782] text-[#3a3a3a] py-1 text-center my-[30px] mx-auto"
+      v-if="taskStore.isLoading"
+    >
+      Loading Tasks ...
+    </div>
 
     <!-- task list -->
     <div
@@ -73,6 +81,10 @@ export default {
   components: { TaskDetail, TaskForm },
   setup() {
     const taskStore = useTaskStore();
+
+    // featch the data
+    taskStore.getTasks();
+
     const filter = ref("all");
     return { taskStore, filter };
   },

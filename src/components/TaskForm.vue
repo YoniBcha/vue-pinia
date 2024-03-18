@@ -5,6 +5,7 @@
       type="text"
       v-model="newTask"
       placeholder="Enter a new task"
+      required
     />
     <button class="ml-3 px-10 py-2 rounded-md bg-[#efefef]">Add</button>
   </form>
@@ -22,8 +23,7 @@ export default {
     const handelSubmit = () => {
       if (newTask.value.length > 0) {
         taskStore.addTask({
-          title: newTask.value,
-          isFav: false,
+          title: newTask.value.trim(), // Trim whitespace from the input          isFav: false,
           id: Math.floor(Math.random() * 10000),
         });
         newTask.value = "";
