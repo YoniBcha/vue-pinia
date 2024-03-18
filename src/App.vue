@@ -13,15 +13,21 @@
       </div>
     </header>
 
+    <!-- new task form -->
+    <div class="mb-10">
+      <TaskForm class="mb-5"/>
+      <hr />
+    </div>
+
     <!-- filter -->
-    <nav class="flex justify-end">
+    <nav class="flex justify-end mb-5">
       <button
-        class="bg-[#52c160] text-white px-4 py-1 mr-4 rounded-lg mb-10"
+        class="bg-[#52c160] text-white px-4 py-1 mr-4 rounded-lg"
         @click="filter = 'all'"
       >
         All tasks</button
       ><button
-        class="bg-[#52c160] text-white px-4 py-1 mr-[26.5%] rounded-lg mb-10"
+        class="bg-[#52c160] text-white px-4 py-1 mr-[26.5%] rounded-lg"
         @click="filter = 'fav'"
       >
         Fav tasks
@@ -61,9 +67,10 @@ import { useTaskStore } from "./stores/TaskStore";
 
 // components
 import TaskDetail from "./components/TaskDetail.vue";
+import TaskForm from "./components/TaskForm.vue";
 
 export default {
-  components: { TaskDetail },
+  components: { TaskDetail, TaskForm },
   setup() {
     const taskStore = useTaskStore();
     const filter = ref("all");
