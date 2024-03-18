@@ -2,7 +2,7 @@
   <main>
     <!-- heading   -->
     <header>
-      <div class="flex items-center h-16 bg-[#efefef] justify-center mb-10">
+      <div class="flex items-center h-16 bg-[#efefef] justify-center">
         <img
           class="rotate-[-30deg]"
           src="./assets/pinia.png"
@@ -16,7 +16,6 @@
     <!-- new task form -->
     <div class="mb-10">
       <TaskForm class="mb-5" />
-      <hr />
     </div>
 
     <!-- filter -->

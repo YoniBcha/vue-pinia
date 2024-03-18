@@ -1,13 +1,15 @@
 <template>
-  <form @submit.prevent="handelSubmit" class="ml-[26%]">
+  <form @submit.prevent="handleSubmit" class="pl-[35%] bg-[#e9e8e8] pt-10 pb-5">
     <input
-      class="outline-none px-4 py-1 border-2 border-[#ffcf45] rounded-sm"
+      class="outline-none px-4 py-1 border-2 border-[#52c160] rounded-lg"
       type="text"
-      v-model="newTask"
+      v-model="newTaskTitle"
       placeholder="Enter a new task"
       required
     />
-    <button class="ml-3 px-10 py-2 rounded-md bg-[#efefef]">Add</button>
+    <button class="ml-3 px-10 py-2 rounded-md bg-[#fad35d] text-white">
+      Add
+    </button>
   </form>
 </template>
 
@@ -18,18 +20,20 @@ import { useTaskStore } from "../stores/TaskStore";
 export default {
   setup() {
     const taskStore = useTaskStore();
-    const newTask = ref("  ");
+    const newTaskTitle = ref("");
 
-    const handelSubmit = () => {
-      if (newTask.value.length > 0) {
-        taskStore.addTask({
-          title: newTask.value.trim(), // Trim whitespace from the input          isFav: false,
-          id: Math.floor(Math.random() * 10000),
-        });
-        newTask.value = "";
+    const handleSubmit = async () => {
+      if (newTaskTitle.value.trim() !== "") {
+        const newTask = {
+          title: newTaskTitle.value.trim(),
+          isFav: false,
+        };
+        await taskStore.addTask(newTask); // Add task to store
+        newTaskTitle.value = ""; // Clear input field
       }
     };
-    return { handelSubmit, newTask };
+
+    return { handleSubmit, newTaskTitle };
   },
 };
 </script>
