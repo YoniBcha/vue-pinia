@@ -3,7 +3,17 @@
     {
       "id": "2",
       "title": "play Gloomhaven",
+      "isFav": true
+    },
+    {
+      "id": "6016",
+      "title": "cooking food",
       "isFav": false
+    },
+    {
+      "id": "38c0",
+      "title": "doing home work",
+      "isFav": true
     }
   ]
 }

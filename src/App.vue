@@ -65,6 +65,12 @@
         <TaskDetail :task="task" />
       </div>
     </div>
+    <button
+      @click="taskStore.$reset"
+      class="px-4 py-1 border-2 border-[#ffcf45] ml-[65%] mt-5 rounded-sm text-[#52c160]"
+    >
+      reset state
+    </button>
   </main>
 </template>
 
@@ -80,6 +86,8 @@ export default {
   components: { TaskDetail, TaskForm },
   setup() {
     const taskStore = useTaskStore();
+    // we can use storeToRefs() function to eliminate taskstore.addtasks like that or automatically use function
+    // that are found on taskstore.js pinia file with out calling taskstore object
 
     // featch the data
     taskStore.getTasks();
